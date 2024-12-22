@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home | Library Management System</title>
+
+    <!-- Bootstrap CSS -->
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet"
+        crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">E-Library Management System</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('home') }}">Home</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('register') }}">Register</a></li>
+                        <li class="nav-item"><a class="nav-link" href="{{ url_for('login') }}">Login</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container my-5">
+        <!-- Welcome Section -->
+        <section class="text-center mb-5">
+            <h2 class="mb-3">Welcome to the E-Library!</h2>
+            <p>Your one-stop solution to access, borrow, and return books conveniently.</p>
+            <div class="d-flex justify-content-center gap-3 mt-4">
+                <a href="{{ url_for('register') }}" class="btn btn-primary btn-lg">Register</a>
+                <a href="{{ url_for('login') }}" class="btn btn-success btn-lg">Login</a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">Why Use Our Library Management System?</h2>
+            <div class="row text-center">
+                <div class="col-md-3 mb-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <p>📚 Easy book borrowing and returning</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <p>🔍 Search for books by title and author</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <p>🗂️ Track your borrowed books</p>
+                    </div>
+                </div>
+                <div class="col-md-3 mb-4">
+                    <div class="p-3 border rounded shadow-sm">
+                        <p>🖥️ User-friendly web interface</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Interactive Section -->
+        <section class="text-center">
+            <h2 class="mb-3">Get Started</h2>
+            <p>Click the button below to see a random quote about books!</p>
+            <button id="quoteButton" class="btn btn-warning btn-lg">Show Me A Quote</button>
+            <p id="quoteDisplay" class="mt-3 fs-5 text-muted"></p>
+        </section>
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-light py-3 text-center">
+        <p class="mb-0">&copy; 2024 E-Library Management System. All rights reserved.</p>
+    </footer>
+
+    <!-- Bootstrap JS Bundle -->
+    <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        crossorigin="anonymous">
+    </script>
+
+    <!-- JavaScript for Quote Interaction -->
+    <script>
+        const quotes = [
+            "“A room without books is like a body without a soul.” – Marcus Tullius Cicero",
+            "“So many books, so little time.” – Frank Zappa",
+            "“The only thing that you absolutely have to know, is the location of the library.” – Albert Einstein",
+            "“Books are a uniquely portable magic.” – Stephen King",
+            "“If you don’t like to read, you haven’t found the right book.” – J.K. Rowling",
+            "“Libraries were full of ideas – perhaps the most dangerous and powerful of all weapons.” – Sarah J. Maas"
+        ];
+
+        document.getElementById("quoteButton").addEventListener("click", () => {
+            const randomQuote = quotes[Math.floor(Math.random() * quotes.length)];
+            document.getElementById("quoteDisplay").innerText = randomQuote;
+        });
+    </script>
+</body>
+</html>
